@@ -11,9 +11,7 @@ function App() {
       <div>
         <ItemListContainer section="productos en oferta"></ItemListContainer>
       </div>
-      <div>
-        <ItemListContainer2 section="destacados"></ItemListContainer2>
-      </div>
+      
       
     </div>
   );
