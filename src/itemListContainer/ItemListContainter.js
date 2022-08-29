@@ -1,20 +1,54 @@
-import { useEffect } from "react";
-import ItemProduct from "../ItemProduct/ItemProduct"
+import { useEffect, useState } from "react";
+
+import products from "../utils/products.mock";
+import ItemList from "../ItemList/ItemList";
 const ItemListContainer = (props) => {
 
-    const product1 = {
-        title:"notebook bgh",
-        price: 1000,
-        image: "bgh.jpg",
-        stock: 5,
-    };
-    const product2 = {
-        title:"macbook",
-        price: 2000,
-        image:"macbook.png",
-        stock: 3,
-    }
    
+    const [listProducts, setListProducts] =useState([])
+    const getProducts = new Promise ( (resolve, reject ) =>{
+        setTimeout( () => {
+            resolve(products)
+        }, 2000)
+
+    });
+
+    
+    /* se renderiza solo en el montaje */
+   useEffect(()=>{
+    /* una forma */
+        getProducts
+            .then((res) =>{    /*el primer parametro es la respuesta de la promesa en este caso res*/
+                setListProducts(res)
+        })
+        .catch((error)=>{
+            console.log("la llamada fallo")
+        })
+        .finally(()=>{
+                /* retorna el resultado  */
+        })
+   }, [])
+ 
+
+
+    
+
+   /* asincronismo otra forma  */
+
+    //const getLog = async () => {
+    //     try {
+    //         const responseLog = await nuevaPromesa()
+    //         console.log("Respuesta desde async function" + responseLog)
+    //     }
+    //     catch(error) {
+    //         console.log(error)
+    //     }
+    // }
+    //getLog()
+
+    /* con el fetch accedemos a una promesa */
+
+
     //useEffect(() => {
     //
     //
@@ -36,9 +70,9 @@ const ItemListContainer = (props) => {
 
        
         <div>
-            <h2>{props.section}</h2>    
-            <ItemProduct data={product1} ></ItemProduct>
-            <ItemProduct data={product2}></ItemProduct>
+            <h2>{props.section}</h2>
+            <ItemList dataProducts={listProducts} ></ItemList>  
+            
 
         </div>
 
