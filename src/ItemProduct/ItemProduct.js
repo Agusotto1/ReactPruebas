@@ -1,9 +1,10 @@
 
 import { useState} from "react"
 import "../ItemProduct/ItemProduct.css"
+import { Link } from 'react-router-dom';
 const ItemProduct =({data}) => {
     
-    const {title, image, price, stock} = data
+    const {title, image, price, stock, id} = data
     
     const [contador, setContador] = useState(1)
 
@@ -43,17 +44,18 @@ const ItemProduct =({data}) => {
 
     return(
         <div className="item-product">
-            <p>{title}</p>
-            <img src={`/assets/${image}`} alt="" className="producto" />
-            
-            <p>${price}</p>
-            <p>stock {stock}</p>
-            <div>
-                <button onClick={removeCantidad}>-</button>
-                <p>{contador}</p>
-                <button onClick={addCantidad}>+</button>
-            </div>
-            <button>comprar</button>
+            <Link  to={`/products/${id}`}>
+                <p>{title}</p>
+                <img src={`/assets/${image}`} alt="" className="producto" />
+                
+                <p>${price}</p>
+                <p>stock {stock}</p>
+                <div>
+                    <button onClick={removeCantidad}>-</button>
+                    <p>{contador}</p>
+                    <button onClick={addCantidad}>+</button>
+                </div>
+            </Link>
 
 
         </div>
