@@ -8,7 +8,8 @@ const ItemDetail = ({ data }) => {
     
     const [quantitySelected, setQuantitySelected] = useState(0)
     
-
+    // en el setQuantity Select se guarda la cantidad seleccionada en el
+    // componente countquantity
 
 
 
@@ -28,6 +29,14 @@ const ItemDetail = ({ data }) => {
                 <p>available stock: {data.stock}</p>
                 <p>category: {data.category}</p>
                
+
+
+                {
+               quantitySelected >0 ? <button><Link to="/cart">TERMINAR COMPRA</Link></button> 
+               : <ItemCount setQuantitySelected={setQuantitySelected} cantProduct={data.stock} productData={data}/>
+            }
+
+
                 
             </div>
 

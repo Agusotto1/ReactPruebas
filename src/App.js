@@ -10,6 +10,7 @@ import Contact from "./pages/Contact.js"
 import Products from "./pages/Products.js"
 import Detail from "./pages/Detail.js"
 import Category from "./pages/Category";
+import Checkout from './pages/Checkout';
 
 
 
@@ -45,6 +46,7 @@ function App() {
           <Route path='/Products/:id' element={<Detail/>} />
           <Route path="category/" element={<Category/>}/>
           <Route path="category/:category" element={<ItemListContainer/>}/>
+          <Route path='/cart' element={<Checkout />}/>
           <Route/>
           
       </Routes>
